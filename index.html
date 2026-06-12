@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Día de la Bandera Argentina — Historia y Cronología</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:     #2F5FA8;
+      --azul-cl:  #5B87CC;
+      --azul-bg:  #EBF1FB;
+      --blanco:   #F7F5EF;
+      --arena:    #E8E0CC;
+      --texto:    #1A1A2E;
+      --texto-s:  #555570;
+      --verde:    #1A7A4A;
+      --verde-bg: #E4F5EC;
+      --rojo:     #C0392B;
+      --rojo-bg:  #FDECEA;
+      --naranja:  #C47A1A;
+      --nar-bg:   #FDF3E3;
+      --gris:     #5A5A6A;
+      --gris-bg:  #EEECF0;
+      --gold:     #C9A94B;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--blanco);
+      color: var(--texto);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--azul);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 48px,
+        rgba(255,255,255,0.04) 48px,
+        rgba(255,255,255,0.04) 50px
+      );
+      pointer-events: none;
+    }
+    .hero-flag {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: 0 auto 2rem;
+      width: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .flag-stripe { height: 36px; width: 100%; }
+    .flag-stripe.top    { background: #5B87CC; }
+    .flag-stripe.mid    { background: #F7F5EF; display: flex; align-items: center; justify-content: center; }
+    .flag-stripe.bottom { background: #5B87CC; }
+    .sol {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(201,169,75,0.3);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.82;
+      max-width: 480px;
+      margin: 0 auto 0.5rem;
+      line-height: 1.6;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 99px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      max-width: 680px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .intro p {
+      font-size: 1rem;
+      color: var(--texto-s);
+      line-height: 1.75;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: var(--azul-cl);
+      margin-top: 0.75rem;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .tl-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 52px;
+    }
+    .tl-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 18px;
+      border: 3px solid var(--blanco);
+      box-shadow: 0 0 0 2px currentColor;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-line {
+      flex: 1;
+      width: 2px;
+      background: var(--arena);
+      margin: 4px 0;
+      min-height: 20px;
+    }
+    .tl-card {
+      flex: 1;
+      background: #fff;
+      border: 1.5px solid var(--arena);
+      border-radius: 14px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+      position: relative;
+    }
+    .tl-card:hover {
+      border-color: var(--azul-cl);
+      box-shadow: 0 4px 18px rgba(47,95,168,0.10);
+      transform: translateY(-1px);
+    }
+    .tl-card.open {
+      border-color: var(--azul);
+      box-shadow: 0 4px 24px rgba(47,95,168,0.13);
+    }
+    .tl-date {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--texto-s);
+      margin-bottom: 4px;
+    }
+    .tl-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .tl-desc {
+      font-size: 0.9rem;
+      color: var(--texto-s);
+      line-height: 1.6;
+    }
+    .tl-extra {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: var(--texto-s);
+      line-height: 1.65;
+      border-top: 1.5px solid var(--arena);
+      padding-top: 10px;
+    }
+    .tl-card.open .tl-extra { display: block; }
+    .tl-toggle {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--azul-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      color: var(--azul);
+      transition: transform .2s, background .2s;
+      flex-shrink: 0;
+    }
+    .tl-card.open .tl-toggle {
+      transform: rotate(45deg);
+      background: var(--azul);
+      color: #fff;
+    }
+
+    /* tags */
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+    .tag-rev  { background: var(--azul-bg);  color: var(--azul); }
+    .tag-ban  { background: var(--verde-bg); color: var(--verde); }
+    .tag-proh { background: var(--rojo-bg);  color: var(--rojo); }
+    .tag-bend { background: var(--nar-bg);   color: var(--naranja); }
+    .tag-ofic { background: var(--gris-bg);  color: var(--gris); }
+
+    /* ── RESUMEN ── */
+    .resumen {
+      background: var(--azul);
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .resumen-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .resumen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .fechas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .fecha-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .fecha-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      line-height: 1.1;
+    }
+    .fecha-card .mes {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+    .fecha-card .desc {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--texto-s);
+      border-top: 1px solid var(--arena);
+    }
+    footer a { color: var(--azul); text-decoration: none; }
+
+    @media (max-width: 480px) {
+      .tl-left { min-width: 36px; }
+      .tl-card { padding: 0.9rem 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tl-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-flag" aria-hidden="true">
+    <div class="flag-stripe top"></div>
+    <div class="flag-stripe mid"><div class="sol"></div></div>
+    <div class="flag-stripe bottom"></div>
+  </div>
+  <h1>Historia de la<br>Bandera Argentina</h1>
+  <p>De los primeros gritos de revolución a los mástiles de Rosario y Jujuy — la historia completa de nuestra enseña nacional.</p>
+  <span class="hero-badge">📅 20 de junio — Día de la Bandera</span>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <p>La bandera que hoy conocemos no nació en un día. Fue creada en medio de una guerra, prohibida por el propio gobierno, y reconocida oficialmente recién cuatro años después. Conocé la historia completa.</p>
+  <p class="hint">↓ Tocá cada evento para leer más detalles</p>
+</section>
+
+<!-- TIMELINE -->
+<main class="timeline" aria-label="Línea de tiempo histórica">
+
+  <!-- 1 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--azul)"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">25 de mayo de 1810</div>
+      <div class="tl-title">Revolución de Mayo</div>
+      <div class="tl-desc">Se forma la Primera Junta de Gobierno. Belgrano es uno de sus principales vocales e impulsores.</div>
+      <div class="tl-extra">Las tropas todavía usaban banderas españolas porque se gobernaba "en nombre del rey" —Fernando VII estaba preso por Napoleón—. Esto generaba una situación muy confusa en el campo de batalla: ¡ambos bandos tenían los mismos colores!</div>
+      <span class="tag tag-rev">Revolución</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--verde)"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">13 de febrero de 1812</div>
+      <div class="tl-title">Belgrano propone la escarapela</div>
+      <div class="tl-desc">Desde Rosario, donde vigilaba las costas del Paraná, propone al Primer Triunvirato crear un distintivo único para sus soldados.</div>
+      <div class="tl-extra">El objetivo era distinguir claramente a los soldados patriotas de los realistas. El <strong>18 de febrero</strong> el Triunvirato aprueba la Escarapela Nacional con los colores blanco y azul celeste — los mismos que luego tendría la bandera.</div>
+      <span class="tag tag-ban">Escarapela nacional</span>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--verde)"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">27 de febrero de 1812</div>
+      <div class="tl-title">Primera vez que se iza la bandera ✦</div>
+      <div class="tl-desc">Entusiasmado con la escarapela, Belgrano manda a coser una bandera celeste y blanca y la iza en las baterías "Libertad" e "Independencia", a orillas del río Paraná, en Rosario.</div>
+      <div class="tl-extra">La bandera fue confeccionada por la rosarina <strong>María Catalina Echevarría</strong>. Ese mismo día Belgrano le escribió al gobierno para avisarle lo que había hecho — sin saber la respuesta que recibiría.</div>
+      <span class="tag tag-ban">Creación de la bandera</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--rojo)"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">3 de marzo de 1812</div>
+      <div class="tl-title">¡El gobierno la prohíbe!</div>
+      <div class="tl-desc">El Triunvirato responde con una orden estricta: <em>"Oculte esa bandera y use la que se usa en la Capital."</em></div>
+      <div class="tl-extra">El gobierno no quería romper relaciones diplomáticas con España tan bruscamente. Pero cuando la carta llegó a Rosario, Belgrano ya se había marchado al norte para hacerse cargo del Ejército del Norte. <strong>Nunca leyó la prohibición a tiempo.</strong></div>
+      <span class="tag tag-proh">Prohibición</span>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--naranja)"></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">25 de mayo de 1812</div>
+      <div class="tl-title">La bandera se bendice en Jujuy</div>
+      <div class="tl-desc">En el segundo aniversario de la Revolución, Belgrano vuelve a mostrar la bandera en San Salvador de Jujuy y la hace bendecir en la Iglesia Catedral.</div>
+      <div class="tl-extra">La bendición fue realizada por el canónigo <strong>Juan Ignacio Gorriti</strong>. Belgrano todavía no sabía que el gobierno se la había prohibido. Cuando el reto finalmente le llegó (en junio), respondió indignado pero obediente que la guardaría y que la reservaría <em>"para el día de una gran victoria"</em>.</div>
+      <span class="tag tag-bend">Bendición en Jujuy</span>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="tl-item">
+    <div class="tl-left">
+      <div class="tl-dot" style="color: var(--gris)"></div>
+      <!-- sin línea (último) -->
+    </div>
+    <div class="tl-card" onclick="toggle(this)" role="button" aria-expanded="false" tabindex="0">
+      <div class="tl-toggle">+</div>
+      <div class="tl-date">9 de julio de 1816</div>
+      <div class="tl-title">La bandera se aprueba oficialmente</div>
+      <div class="tl-desc">Tras la Declaración de la Independencia, el Congreso de Tucumán aprueba la bandera celeste y blanca como símbolo nacional.</div>
+      <div class="tl-extra">Pasaron <strong>cuatro años</strong> desde que Belgrano la creó hasta que el gobierno la reconoció oficialmente. En ese tiempo, la usó discretamente y la reservó para los momentos de victoria, tal como lo había prometido.</div>
+      <span class="tag tag-ofic">Aprobación oficial</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- RESUMEN DE FECHAS -->
+<section class="resumen">
+  <div class="resumen-inner">
+    <h2>Fechas clave para recordar</h2>
+    <div class="fechas-grid">
+      <div class="fecha-card">
+        <span class="num">25 May</span>
+        <span class="mes">1810</span>
+        <span class="desc">Revolución de Mayo — Belgrano en la Primera Junta</span>
+      </div>
+      <div class="fecha-card">
+        <span class="num">27 Feb</span>
+        <span class="mes">1812</span>
+        <span class="desc">Belgrano iza la bandera por primera vez en Rosario</span>
+      </div>
+      <div class="fecha-card">
+        <span class="num">25 May</span>
+        <span class="mes">1812</span>
+        <span class="desc">La bandera se bendice por primera vez en Jujuy</span>
+      </div>
+      <div class="fecha-card">
+        <span class="num">9 Jul</span>
+        <span class="mes">1816</span>
+        <span class="desc">La bandera es aprobada oficialmente por el Congreso</span>
+      </div>
+      <div class="fecha-card">
+        <span class="num">20 Jun</span>
+        <span class="mes">cada año</span>
+        <span class="desc">Día de la Bandera Argentina 🇦🇷</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--texto-s);">
+  Hecho por <strong style="color: var(--azul);">Agustino López</strong>
+</p>
+
+<footer>
+  <p>Recurso educativo — Historia Argentina &nbsp;·&nbsp; <a href="https://es.wikipedia.org/wiki/Bandera_de_Argentina" target="_blank" rel="noopener">Fuente: Wikipedia</a></p>
+  <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--texto-s);">
+    Hecho por <strong style="color: var(--azul);">Agustino López</strong>
+  </p>
+</footer>
+
+<script>
+  function toggle(card) {
+    const isOpen = card.classList.toggle('open');
+    card.setAttribute('aria-expanded', isOpen);
+  }
+  document.querySelectorAll('.tl-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
+    });
+  });
+</script>
+</body>
+</html>
